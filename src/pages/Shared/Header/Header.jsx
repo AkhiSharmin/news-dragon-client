@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () => {
     return (
-        <Container className='bg-light.bg-gradient'>
+        <Container className='mt-4'>
             <div className="text-center">
                 <img src={logo} alt="" />
                 <p className='text-secondary'><small>Journalism Without Fear or Favour</small></p>

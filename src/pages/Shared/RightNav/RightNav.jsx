@@ -8,7 +8,7 @@ import bg from '../../../assets/bg.png'
 const RightNav = () => {
     return (
         <div>
-            <h2>Login With</h2>
+            <h2 className='mt-4'>Login With</h2>
             <Button className='mb-2' variant="outline-secondary"> <FaGoogle /> Login with Google</Button>
             <Button variant="outline-success"> <FaGithub /> Login with Github</Button>
             <div>
@@ -28,6 +28,7 @@ const RightNav = () => {
                     <img src={bg} alt="" />
                 </div>
             </div>
+            
         </div>
     );
 };

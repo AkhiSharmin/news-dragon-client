@@ -10,7 +10,7 @@ const QZone = () => {
             <div>
                 <img src={qZone1} alt="" />
                 <img src={qZone2} alt="" />
-                <img src={qZone3} alt="" />
+                <img src={qZone3} alt="" /> 
             </div>
         </div>
     );
