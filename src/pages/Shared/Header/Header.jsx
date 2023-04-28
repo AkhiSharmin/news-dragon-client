@@ -5,8 +5,18 @@ import { Button, Container } from 'react-bootstrap';
 import Marquee from "react-fast-marquee";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProviders';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
+
+
+    const {user} = useContext(AuthContext);
+
+
+
     return (
         <Container className='mt-4'>
             <div className="text-center">
@@ -29,15 +39,25 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mx-auto">
-                    <Nav.Link href="#Home">Home</Nav.Link>
+                    <Nav.Link href="#home">
+                        <Link to='/'>Home</Link>
+                    </Nav.Link>
                     <Nav.Link href="#About">About</Nav.Link>
                     <Nav.Link href="#Career">Career</Nav.Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link href="#deets">Profile</Nav.Link>
+
+                    { user && <Nav.Link href="#deets"> 
+                        <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle> 
+                    </Nav.Link>}
+
                     <Nav.Link eventKey={2} href="#memes">
-                    <Button variant="secondary">Login</Button>
+                        {user ?
+                            <Button variant="secondary">LogOut</Button> :
+                            <Link to='/login'><Button variant="secondary">Login</Button></Link>
+                        }
                     </Nav.Link>
+
                 </Nav>
                 </Navbar.Collapse>
             </Container>
