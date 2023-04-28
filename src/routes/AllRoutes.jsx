@@ -4,20 +4,40 @@ import Home from "../pages/Home/Home/Home";
 import Category from "../pages/Home/Category/Category";
 import NewsLayout from "../layout/NewsLayout";
 import News from "../pages/News/News/News";
+import LoginLayout from "../layout/LoginLayout";
+import Login from "../pages/Login/Login/Login";
+import Register from "../pages/Login/Register/Register";
+import {Navigate} from 'react-router-dom';
 
 
 const router = createBrowserRouter([
+
     {
         path: '/',
-        element: <Main></Main>,
+        element: <LoginLayout></LoginLayout>,
         children: [
             {
                 path: '/',
-                element: <Category></Category>,
-                loader: () => fetch('http://localhost:5000/news')
+                element: <Navigate to='/category/0'></Navigate>
             },
             {
-                path: '/category/:id',
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: 'register',
+                element: <Register></Register>
+            }
+        ]
+    },
+
+    {
+        path: 'category',
+        element: <Main></Main>,
+        children: [
+            
+            {
+                path: ':id',
                 element: <Category></Category>,
                 loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
             }
