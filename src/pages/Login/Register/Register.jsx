@@ -8,10 +8,20 @@ const Register = () => {
         <Container className='w-25 mx-auto'>
             <h3>Please Register</h3>
         <Form>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" name='name' placeholder="Enter Your name" required/>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Photo Url</Form.Label>
+                <Form.Control type="text" name='photo' placeholder="Enter your Photo url" required/>
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name='email' placeholder="Enter email" required/>
-                
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -19,7 +29,7 @@ const Register = () => {
                 <Form.Control type="password" name='password' placeholder="Password" required/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Check type="checkbox" name='accept' label="Accept Terms and condition" />
             </Form.Group>
             
             <Button variant="primary" type="submit">
