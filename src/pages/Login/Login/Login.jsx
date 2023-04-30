@@ -10,19 +10,20 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   console.log("login page location", location);
+  const from = location.state?.from?.pathname || "/category/0";
 
   const handelSingIn = (event) => {
     event.preventDefault();
-    const from = event.target;
-    const email = from.email.value;
-    const password = from.password.value;
+    const myFrom = event.target;
+    const email = myFrom.email.value;
+    const password = myFrom.password.value;
     console.log(email, password);
 
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate("/category/0");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error.message);
