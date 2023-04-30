@@ -1,47 +1,52 @@
-import React, { useContext } from 'react';
-import { Button, Container } from 'react-bootstrap';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
-import { AuthContext } from '../../../providers/AuthProviders';
+import React, { useContext } from "react";
+import { Button, Container } from "react-bootstrap";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../../../providers/AuthProviders";
 
 const NavigationBar = () => {
+  const { user, logOut } = useContext(AuthContext);
 
-    const {user} = useContext(AuthContext);
+  const handelLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.error(error.message));
+  };
 
-    return (
+  return (
+    <Container>
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-                <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-            <Container>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mx-auto">
-                    
-                        <Link to='/category/0'>Home</Link>
-                    
-                    <Nav.Link href="#About">About</Nav.Link>
-                    <Nav.Link href="#Career">Career</Nav.Link>
-                </Nav>
-                <Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mx-auto">
+              <Link to="/category/0">Home</Link>
 
-                    { user &&  
-                        <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle> 
-                    }
+              <Nav.Link href="#About">About</Nav.Link>
+              <Nav.Link href="#Career">Career</Nav.Link>
+            </Nav>
+            <Nav>
+              {user && (
+                <FaUserCircle style={{ fontSize: "2rem" }}></FaUserCircle>
+              )}
 
-                    
-                    {user ?
-                            <Button variant="secondary">LogOut</Button> :
-                            <Link to='/login'><Button variant="secondary">Login</Button></Link>
-                    }
-                    
-
-                </Nav>
-                </Navbar.Collapse>
-            </Container>
-            </Navbar>
+              {user ? (
+                <Button onClick={handelLogOut} variant="secondary">
+                  LogOut
+                </Button>
+              ) : (
+                <Link to="/login">
+                  <Button variant="secondary">Login</Button>
+                </Link>
+              )}
+            </Nav>
+          </Navbar.Collapse>
         </Container>
-    );
+      </Navbar>
+    </Container>
+  );
 };
 
 export default NavigationBar;
