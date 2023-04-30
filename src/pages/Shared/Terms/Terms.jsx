@@ -11,9 +11,10 @@ const Terms = () => {
         tenetur! Vitae nam maiores quasi consequatur quibusdam. Quibusdam totam
         exercitationem doloremque hic!
       </p>
-      <P>
+      <p>
+        {" "}
         Go back to <Link to="/register">Register</Link>
-      </P>
+      </p>
     </div>
   );
 };

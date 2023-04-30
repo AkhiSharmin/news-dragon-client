@@ -3,9 +3,11 @@ import { Container, Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
+import { useState } from "react";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const [accepted, setAccepted] = useState(false);
 
   const handelRegister = (event) => {
     event.preventDefault();
@@ -24,6 +26,10 @@ const Register = () => {
       .catch((error) => {
         console.error(error.message);
       });
+  };
+
+  const handelAccepted = (event) => {
+    console.log(event.target);
   };
 
   return (
@@ -71,6 +77,7 @@ const Register = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
+            onClick={handelAccepted}
             type="checkbox"
             name="accept"
             label={
