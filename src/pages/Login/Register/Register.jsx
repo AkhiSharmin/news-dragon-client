@@ -29,7 +29,7 @@ const Register = () => {
   };
 
   const handelAccepted = (event) => {
-    console.log(event.target);
+    setAccepted(event.target.checked);
   };
 
   return (
@@ -88,8 +88,8 @@ const Register = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Login
+        <Button variant="primary" disabled={!accepted} type="submit">
+          Register
         </Button>
         <br />
         <Form.Text className="text-success"></Form.Text>
